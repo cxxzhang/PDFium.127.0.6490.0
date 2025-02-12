@@ -1,0 +1,3 @@
+# Generated from 'DEPS'
+checkout_android = false
+checkout_skia = false

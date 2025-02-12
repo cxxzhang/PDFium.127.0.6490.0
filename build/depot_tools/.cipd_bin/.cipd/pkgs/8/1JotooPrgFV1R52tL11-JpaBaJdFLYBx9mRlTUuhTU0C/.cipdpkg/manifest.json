@@ -1,0 +1,19 @@
+{
+  "format_version": "1.1",
+  "package_name": "infra/tools/dirmd/windows-amd64",
+  "version_file": ".versions/dirmd.exe.cipd_version",
+  "install_mode": "copy",
+  "actual_install_mode": "copy",
+  "files": [
+    {
+      "name": "dirmd.exe",
+      "size": 23240704,
+      "hash": "DMA2vRkQjWCGTq0qkSEDUy1JISTTWmHnpmm8MKYGrAQC"
+    },
+    {
+      "name": ".versions/dirmd.exe.cipd_version",
+      "size": 120,
+      "hash": "1cjfih0qy3xZCrXGAmXN0VrthHC9rLEAaRmYhaECFXQC"
+    }
+  ]
+}

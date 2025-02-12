@@ -1,0 +1,24 @@
+diff --git a/debian/libcurl3t64-gnutls.symbols b/debian/libcurl3t64-gnutls.symbols
+index c9b1b8d..f93ff88 100644
+--- a/debian/libcurl3t64-gnutls.symbols
++++ b/debian/libcurl3t64-gnutls.symbols
+@@ -1,7 +1,5 @@
+ libcurl-gnutls.so.4 libcurl3t64-gnutls #MINVER#
+ * Build-Depends-Package: libcurl4-gnutls-dev
+- CURL_GNUTLS_3@CURL_GNUTLS_3 7.16.2
+- HIDDEN@HIDDEN 7.16.2
+  curl_easy_cleanup@CURL_GNUTLS_3 7.16.2
+  curl_easy_duphandle@CURL_GNUTLS_3 7.16.2
+  curl_easy_escape@CURL_GNUTLS_3 7.16.2
+diff --git a/debian/libcurl4t64.symbols b/debian/libcurl4t64.symbols
+index 05dc21b..c2b81e4 100644
+--- a/debian/libcurl4t64.symbols
++++ b/debian/libcurl4t64.symbols
+@@ -1,7 +1,5 @@
+ libcurl.so.4 libcurl4t64 #MINVER#
+ * Build-Depends-Package: libcurl4-openssl-dev
+- CURL_OPENSSL_4@CURL_OPENSSL_4 7.16.2
+- HIDDEN@HIDDEN 7.16.2
+  curl_easy_cleanup@CURL_OPENSSL_4 7.16.2
+  curl_easy_duphandle@CURL_OPENSSL_4 7.16.2
+  curl_easy_escape@CURL_OPENSSL_4 7.16.2

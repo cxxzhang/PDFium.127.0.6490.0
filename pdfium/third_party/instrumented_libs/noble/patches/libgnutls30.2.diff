@@ -1,0 +1,37 @@
+diff --git a/lib/mbuffers.c b/lib/mbuffers.c
+index 15cbf52..b6a40a5 100644
+--- a/lib/mbuffers.c
++++ b/lib/mbuffers.c
+@@ -282,7 +282,7 @@ mbuffer_st *_mbuffer_alloc(size_t maximum_size)
+ 	}
+ 
+ 	/* set the structure to zero */
+-	memset(st, 0, sizeof(*st));
++	memset(st, 0, maximum_size + sizeof(mbuffer_st));
+ 
+ 	/* payload points after the mbuffer_st structure */
+ 	st->msg.data = (uint8_t *)st + sizeof(mbuffer_st);
+diff --git a/lib/nettle/cipher.c b/lib/nettle/cipher.c
+index edc1c37..c5df4d4 100644
+--- a/lib/nettle/cipher.c
++++ b/lib/nettle/cipher.c
+@@ -1450,6 +1450,7 @@ static int wrap_nettle_cipher_aead_decrypt(void *_ctx, const void *nonce,
+ 	if (ctx->cipher->aead_decrypt == NULL) {
+ 		/* proper AEAD cipher */
+ 		uint8_t tag[MAX_HASH_SIZE];
++		memset(tag, 0, MAX_HASH_SIZE);
+ 		unsigned max_iv;
+ 
+ 		max_iv = ctx->cipher->max_iv_size;
+diff --git a/lib/nettle/pk.c b/lib/nettle/pk.c
+index 4ddfcff..a2f5760 100644
+--- a/lib/nettle/pk.c
++++ b/lib/nettle/pk.c
+@@ -397,6 +397,7 @@ static int _wrap_nettle_pk_derive(gnutls_pk_algorithm_t algo,
+ 	}
+ 	case GNUTLS_PK_EC: {
+ 		struct ecc_scalar ecc_priv;
++		memset(&ecc_priv, 0, sizeof(ecc_priv));
+ 		struct ecc_point ecc_pub;
+ 		const struct ecc_curve *curve;
+ 		struct ecc_scalar n;

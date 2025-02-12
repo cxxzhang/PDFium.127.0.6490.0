@@ -1,0 +1,19 @@
+{
+  "format_version": "1.1",
+  "package_name": "infra/chromeperf/pinpoint/windows-amd64",
+  "version_file": ".versions/pinpoint.exe.cipd_version",
+  "install_mode": "copy",
+  "actual_install_mode": "copy",
+  "files": [
+    {
+      "name": "pinpoint.exe",
+      "size": 26825728,
+      "hash": "PghhyDi8rSkvGlWV-CylUEEJab3iaZkNK8Q3edzjRxIC"
+    },
+    {
+      "name": ".versions/pinpoint.exe.cipd_version",
+      "size": 128,
+      "hash": "a6RSWfJpoBUQu2C0VDs7CGETTihdjhPEfgFOJ5VKGHYC"
+    }
+  ]
+}

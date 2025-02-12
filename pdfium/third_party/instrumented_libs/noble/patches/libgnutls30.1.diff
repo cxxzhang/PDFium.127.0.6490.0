@@ -1,0 +1,30 @@
+diff --git a/lib/safe-memfuncs.c b/lib/safe-memfuncs.c
+index a3485da..60d19e3 100644
+--- a/lib/safe-memfuncs.c
++++ b/lib/safe-memfuncs.c
+@@ -34,7 +34,6 @@
+  **/
+ void gnutls_memset(void *data, int c, size_t size)
+ {
+-	explicit_bzero(data, size);
+ 	memset(data, c, size);
+ }
+ 
+@@ -54,16 +53,7 @@ void gnutls_memset(void *data, int c, size_t size)
+  **/
+ int gnutls_memcmp(const void *s1, const void *s2, size_t n)
+ {
+-	unsigned i;
+-	unsigned status = 0;
+-	const uint8_t *_s1 = s1;
+-	const uint8_t *_s2 = s2;
+-
+-	for (i = 0; i < n; i++) {
+-		status |= (_s1[i] ^ _s2[i]);
+-	}
+-
+-	return status;
++	return memcmp(s1, s2, n);
+ }
+ 
+ #ifdef TEST_SAFE_MEMSET

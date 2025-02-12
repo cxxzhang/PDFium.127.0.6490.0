@@ -1,0 +1,12 @@
+#!/usr/bin/env bash
+export EDITOR=${EDITOR:=notepad}
+WIN_BASE=`dirname $0`
+UNIX_BASE=`cygpath "$WIN_BASE"`
+export PATH="$PATH:$UNIX_BASE/bootstrap-2@3_8_10_chromium_23_bin/python/bin:$UNIX_BASE/bootstrap-2@3_8_10_chromium_23_bin/python/bin/Scripts:$UNIX_BASE/bootstrap-2@3_8_10_chromium_23_bin/python3/bin:$UNIX_BASE/bootstrap-2@3_8_10_chromium_23_bin/python3/bin/Scripts"
+export PYTHON_DIRECT=1
+export PYTHONUNBUFFERED=1
+if [[ $# > 0 ]]; then
+  $UNIX_BASE/bootstrap-2@3_8_10_chromium_23_bin/git/bin/bash.exe "$@"
+else
+  $UNIX_BASE/bootstrap-2@3_8_10_chromium_23_bin/git/git-bash.exe &
+fi

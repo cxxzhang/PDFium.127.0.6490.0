@@ -1,0 +1,38 @@
+diff --git a/lib/libgnutls.map b/lib/libgnutls.map
+index 87907f8..cca2bd1 100644
+--- a/lib/libgnutls.map
++++ b/lib/libgnutls.map
+@@ -1442,9 +1442,6 @@ GNUTLS_FIPS140_3_4 {
+ 	gnutls_pbkdf2_self_test;
+ 	gnutls_tlsprf_self_test;
+ 	#for FIPS140-2 validation
+-	drbg_aes_reseed;
+-	drbg_aes_init;
+-	drbg_aes_generate;
+ 	_dsa_generate_dss_pq;
+ 	_dsa_generate_dss_g;
+ 	_dsa_validate_dss_g;
+@@ -1454,10 +1451,6 @@ GNUTLS_FIPS140_3_4 {
+ 	_gnutls_encode_ber_rs_raw;
+ 	_gnutls_decode_ber_rs_raw;
+ 	_rsa_generate_fips186_4_keypair;
+-	_gnutls_dh_compute_key;
+-	_gnutls_dh_generate_key;
+-	_gnutls_ecdh_generate_key;
+-	_gnutls_ecdh_compute_key;
+ 	_gnutls_cipher_get_iv;
+ } GNUTLS_3_4;
+ 
+@@ -1485,12 +1478,9 @@ GNUTLS_PRIVATE_3_4 {
+ 	_gnutls_rsa_pms_set_version;
+ 	_gnutls_record_set_default_version;
+ 	_gnutls_hello_set_default_version;
+-	# Internal symbols needed by tests/gc:
+-	_gnutls_pbkdf2_sha1;
+ 	# Internal symbols needed by tests/mpi:
+ 	_gnutls_mpi_ops;
+ 	_gnutls_mpi_log;
+-	_gnutls_mpi_release;
+ 	# tests/time.c
+ 	_gnutls_utcTime2gtime;
+ 	_gnutls_x509_generalTime2gtime;

@@ -1,0 +1,24 @@
+[core]
+	symlinks = false
+	autocrlf = false
+	fscache = true
+	filemode = false
+	preloadindex = true
+[color]
+	diff = auto
+	status = auto
+	branch = auto
+	interactive = true
+[help]
+	format = html
+[diff "astextplain"]
+	textconv = astextplain
+[rebase]
+	autosquash = true
+[filter "lfs"]
+	clean = git-lfs clean -- %f
+	smudge = git-lfs smudge -- %f
+	process = git-lfs filter-process
+	required = true
+[protocol]
+	version = 2

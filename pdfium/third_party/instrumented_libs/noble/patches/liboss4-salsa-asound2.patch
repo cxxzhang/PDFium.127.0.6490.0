@@ -1,0 +1,12 @@
+diff -rupN oss4-4.2-build2020.old/lib/libsalsa/Makefile oss4-4.2-build2020/lib/libsalsa/Makefile
+--- oss4-4.2-build2020.old/lib/libsalsa/Makefile	2024-04-12 00:20:16.541420294 +0000
++++ oss4-4.2-build2020/lib/libsalsa/Makefile	2024-04-12 00:28:23.639968717 +0000
+@@ -2,7 +2,7 @@ LOBJECTS=main.lo output.lo misc.lo pcm.l
+ 
+ OSSLIBDIR=/usr/lib/oss
+ 
+-CFLAGS+=-I../../include -I../libOSSlib
++CFLAGS+=-I../../include -I../libOSSlib -Wno-implicit-function-declaration
+ LIBTOOL=libtool --tag=CC
+ 
+ all: libsalsa.la
