@@ -90,3 +90,24 @@ jobs:
         with:
           name: pdfium_build
           path: pdfium_build.zip
+
+      - name: Create Release
+        id: create_release
+        uses: actions/create-release@v1
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          tag_name: daily-build-${{ github.run_id }}
+          release_name: Daily Build ${{ github.run_id }}
+          draft: false
+          prerelease: true
+
+      - name: Upload Release Asset
+        uses: actions/upload-release-asset@v1
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          upload_url: ${{ steps.create_release.outputs.upload_url }}
+          asset_path: pdfium_build.zip
+          asset_name: pdfium_build.zip
+          asset_content_type: application/zip
