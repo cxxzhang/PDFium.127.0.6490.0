@@ -15,12 +15,19 @@ jobs:
         run: dir "C:\Program Files (x86)\Windows Kits\10\Include"
         shell: powershell
 
+      - name: List Visual Studio 2022 Installations
+        run: |
+          dir "C:\Program Files (x86)\Microsoft Visual Studio\2022"
+          dir "C:\Program Files\Microsoft Visual Studio\2022"
+          Get-ChildItem "C:\Program Files (x86)\Microsoft Visual Studio\Installer" -Recurse
+        shell: powershell
+
       - name: Install Debugging Tools for Windows 10.0.26100.0
         run: |
           $ErrorActionPreference = 'Stop'
-          $vsInstaller = "${env:ProgramFiles(x86)}\Microsoft Visual Studio\Installer\vs_installer.exe"
+          $vsInstaller = "C:\Program Files (x86)\Microsoft Visual Studio\Installer\vs_installer.exe"
           if (Test-Path $vsInstaller) {
-            & $vsInstaller modify --installPath "${env:ProgramFiles(x86)}\Microsoft Visual Studio\2022\Enterprise" --add Microsoft.VisualStudio.Component.Windows10SDK.26100.DebuggingTools --quiet --wait
+            & $vsInstaller modify --installPath "C:\Program Files\Microsoft Visual Studio\2022\Enterprise" --add Microsoft.VisualStudio.Component.Windows10SDK.26100.DebuggingTools --quiet --wait
           }
         shell: powershell
 
