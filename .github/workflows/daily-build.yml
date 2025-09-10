@@ -17,7 +17,6 @@ jobs:
 
       - name: List Visual Studio 2022 Installations
         run: |
-          dir "C:\Program Files (x86)\Microsoft Visual Studio\2022"
           dir "C:\Program Files\Microsoft Visual Studio\2022"
           Get-ChildItem "C:\Program Files (x86)\Microsoft Visual Studio\Installer" -Recurse
         shell: powershell
