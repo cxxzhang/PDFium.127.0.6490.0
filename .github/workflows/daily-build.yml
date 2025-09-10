@@ -47,36 +47,36 @@ jobs:
         run: |
           mkdir package
           mkdir package\include
-          mkdir package\Debug\arm64
-          mkdir package\Debug\x64
-          mkdir package\Debug\x86
-          mkdir package\Release\arm64
-          mkdir package\Release\x64
-          mkdir package\Release\x86
+          mkdir package\bin\debug\arm64
+          mkdir package\bin\debug\x64
+          mkdir package\bin\debug\x86
+          mkdir package\bin\release\arm64
+          mkdir package\bin\release\x64
+          mkdir package\bin\release\x86
 
-          copy pdfium\out\Debug_GN_arm64\pdfium.dll package\Debug\arm64\
-          copy pdfium\out\Debug_GN_arm64\pdfium.dll.lib package\Debug\arm64\
-          copy pdfium\out\Debug_GN_arm64\pdfium.dll.pdb package\Debug\arm64\
+          copy pdfium\out\Debug_GN_arm64\pdfium.dll package\bin\debug\arm64\
+          copy pdfium\out\Debug_GN_arm64\pdfium.dll.lib package\bin\debug\arm64\
+          copy pdfium\out\Debug_GN_arm64\pdfium.dll.pdb package\bin\debug\arm64\
 
-          copy pdfium\out\Debug_GN_x64\pdfium.dll package\Debug\x64\
-          copy pdfium\out\Debug_GN_x64\pdfium.dll.lib package\Debug\x64\
-          copy pdfium\out\Debug_GN_x64\pdfium.dll.pdb package\Debug\x64\
+          copy pdfium\out\Debug_GN_x64\pdfium.dll package\bin\debug\x64\
+          copy pdfium\out\Debug_GN_x64\pdfium.dll.lib package\bin\debug\x64\
+          copy pdfium\out\Debug_GN_x64\pdfium.dll.pdb package\bin\debug\x64\
 
-          copy pdfium\out\Debug_GN_x86\pdfium.dll package\Debug\x86\
-          copy pdfium\out\Debug_GN_x86\pdfium.dll.lib package\Debug\x86\
-          copy pdfium\out\Debug_GN_x86\pdfium.dll.pdb package\Debug\x86\
+          copy pdfium\out\Debug_GN_x86\pdfium.dll package\bin\debug\x86\
+          copy pdfium\out\Debug_GN_x86\pdfium.dll.lib package\bin\debug\x86\
+          copy pdfium\out\Debug_GN_x86\pdfium.dll.pdb package\bin\debug\x86\
 
-          copy pdfium\out\Release_GN_arm64\pdfium.dll package\Release\arm64\
-          copy pdfium\out\Release_GN_arm64\pdfium.dll.lib package\Release\arm64\
-          copy pdfium\out\Release_GN_arm64\pdfium.dll.pdb package\Release\arm64\
+          copy pdfium\out\Release_GN_arm64\pdfium.dll package\bin\release\arm64\
+          copy pdfium\out\Release_GN_arm64\pdfium.dll.lib package\bin\release\arm64\
+          copy pdfium\out\Release_GN_arm64\pdfium.dll.pdb package\bin\release\arm64\
 
-          copy pdfium\out\Release_GN_x64\pdfium.dll package\Release\x64\
-          copy pdfium\out\Release_GN_x64\pdfium.dll.lib package\Release\x64\
-          copy pdfium\out\Release_GN_x64\pdfium.dll.pdb package\Release\x64\
+          copy pdfium\out\Release_GN_x64\pdfium.dll package\bin\release\x64\
+          copy pdfium\out\Release_GN_x64\pdfium.dll.lib package\bin\release\x64\
+          copy pdfium\out\Release_GN_x64\pdfium.dll.pdb package\bin\release\x64\
 
-          copy pdfium\out\Release_GN_x86\pdfium.dll package\Release\x86\
-          copy pdfium\out\Release_GN_x86\pdfium.dll.lib package\Release\x86\
-          copy pdfium\out\Release_GN_x86\pdfium.dll.pdb package\Release\x86\
+          copy pdfium\out\Release_GN_x86\pdfium.dll package\bin\release\x86\
+          copy pdfium\out\Release_GN_x86\pdfium.dll.lib package\bin\release\x86\
+          copy pdfium\out\Release_GN_x86\pdfium.dll.pdb package\bin\release\x86\
 
       - name: Copy public headers to package\include
         run: |
@@ -84,12 +84,6 @@ jobs:
 
       - name: Package all artifacts
         run: powershell Compress-Archive -Path package\* -DestinationPath pdfium_build.zip
-
-      - name: Upload Artifact
-        uses: actions/upload-artifact@v4
-        with:
-          name: pdfium_build
-          path: pdfium_build.zip
 
       - name: Create Release
         id: create_release
