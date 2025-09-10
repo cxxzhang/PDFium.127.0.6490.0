@@ -1,8 +1,6 @@
-name: Daily PDFium Build
+name: PDFium Build
 
 on:
-  schedule:
-    - cron: '0 2 * * *'
   workflow_dispatch:
 
 jobs:
@@ -14,25 +12,32 @@ jobs:
         uses: actions/checkout@v4
 
       - name: Generate Projects
-        run: call pdfium.gen.projects.bat
+        run: pdfium.gen.projects.bat
+        shell: cmd
 
       - name: Build Debug ARM64
-        run: call pdfium.build.debug.arm64.bat
+        run: pdfium.build.debug.arm64.bat
+        shell: cmd
 
       - name: Build Debug x64
-        run: call pdfium.build.debug.x64.bat
+        run: pdfium.build.debug.x64.bat
+        shell: cmd
 
       - name: Build Debug x86
-        run: call pdfium.build.debug.x86.bat
+        run: pdfium.build.debug.x86.bat
+        shell: cmd
 
       - name: Build Release ARM64
-        run: call pdfium.build.release.arm64.bat
+        run: pdfium.build.release.arm64.bat
+        shell: cmd
 
       - name: Build Release x64
-        run: call pdfium.build.release.x64.bat
+        run: pdfium.build.release.x64.bat
+        shell: cmd
 
       - name: Build Release x86
-        run: call pdfium.build.release.x86.bat
+        run: pdfium.build.release.x86.bat
+        shell: cmd
 
       - name: Collect All Artifacts
         run: |
