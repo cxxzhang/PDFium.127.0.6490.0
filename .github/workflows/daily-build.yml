@@ -46,6 +46,7 @@ jobs:
       - name: Collect All Artifacts
         run: |
           mkdir package
+          mkdir package\include
           mkdir package\Debug\arm64
           mkdir package\Debug\x64
           mkdir package\Debug\x86
@@ -77,13 +78,12 @@ jobs:
           copy pdfium\out\Release_GN_x86\pdfium.dll.lib package\Release\x86\
           copy pdfium\out\Release_GN_x86\pdfium.dll.pdb package\Release\x86\
 
-      - name: Copy public headers to include
+      - name: Copy public headers to package\include
         run: |
-          mkdir include
-          xcopy /S /Y public include
+          xcopy /S /Y pdfium\public\*.h package\include
 
       - name: Package all artifacts
-        run: powershell Compress-Archive -Path package\*,include\* -DestinationPath pdfium_build.zip
+        run: powershell Compress-Archive -Path package\* -DestinationPath pdfium_build.zip
 
       - name: Upload Artifact
         uses: actions/upload-artifact@v4
